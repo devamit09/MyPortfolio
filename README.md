@@ -5,7 +5,10 @@ Welcome to my personal portfolio website repository! This project is designed to
 
 ## 🌐 Live Demo
 
-Check out the live version of my portfolio here: [devamit09.github.io/MyPortfolio](https://devamit09.github.io/MyPortfolio)
+Check out the live version of my portfolio here: 
+
+<a href="https://devamit09.github.io/MyPortfolio" target="_blank">Click here to view the Live Demo</a>
+
 
 ## 🛠️ Built With
 
