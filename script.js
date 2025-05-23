@@ -45,47 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // GitHub API Integration
-  const username = "devamit09";
-  const projectsContainer = document.getElementById("projects-container");
-  const githubStatsContainer = document.getElementById("github-stats");
-
-  if (projectsContainer) {
-    fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`
-    )
-      .then((response) => response.json())
-      .then((repos) => {
-        projectsContainer.innerHTML = "";
-
-        const featuredRepos = repos
-          .filter((repo) => !repo.fork && !repo.archived)
-          .slice(0, 6);
-
-        featuredRepos.forEach((repo) => {
-          const projectCard = document.createElement("div");
-          projectCard.className = "col-lg-6 mb-4";
-          projectCard.innerHTML = `
-            <div class="card project-card h-100">
-              <div class="card-body">
-                <h4>${repo.name}</h4>
-                <p>${repo.description || "No description available"}</p>
-                <a href="${repo.html_url}" target="_blank" class="btn btn-primary">View Code</a>
-              </div>
-            </div>`;
-          projectsContainer.appendChild(projectCard);
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching GitHub projects:", error);
-        projectsContainer.innerHTML = `
-          <div class="col-12">
-            <div class="alert alert-warning">
-              Couldn't load projects from GitHub. Please visit my <a href="https://github.com/devamit09" target="_blank">GitHub profile</a>.
-            </div>
-          </div>`;
-      });
-  }
 
   // Scroll Animation
   const animateOnScroll = function () {
@@ -105,3 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", animateOnScroll);
   animateOnScroll();
 });
+
+//auto-collapse the navbar only when a link is clicked on mobile view
+document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+    if (bsCollapse) {
+      bsCollapse.hide();
+    }
+  });
+});
+
